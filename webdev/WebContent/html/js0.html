@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS Test</title>
+<script type="text/javascript">
+function find_type(){
+	alert(typeof document.getElementById('input_text'));
+	
+}
+</script>
+</head>
+<body>
+
+<form name="test_form">
+<table>
+<caption>Javascript Test</caption>
+<tr>
+	<th>텍스트</th>
+	<td><input id="input_text" type="text" /></td>
+</tr>
+<tr>
+	<th>버튼</th>
+	<td><input type="Button" value="후헿" onclick="find_type()" /></td>
+</tr>
+<tr>
+	<th>결과</th>
+	<td><textarea id="output_text" rows="5" cols="10"></textarea></td>	
+</tr>
+
+
+</table>
+
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Test 13</title>
+<script type="text/javascript">
+	window.addEventListener("resize", start, false)
+	function start(){
+		var _vid = document.querySelector("video");
+		_vid.style.position = "fixed";
+		_vid.style.width = window.innerWidth + 'px';
+		_vid.style.height = window.innerHeight + 'px';
+		_vid.style.zIndex = 100; //클수록 앞으로 보임
+	}
+</script>	
+</head>
+<body onload="start()">
+<video
+	autoplay="autoplay"
+	controls="controls"
+	width="100%">
+	<source src="video/cat.mp4" />
+</video>
+</body>
+</html>

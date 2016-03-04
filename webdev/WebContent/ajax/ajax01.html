@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function setDisplay(str) {
+   document.getElementById('display').value = str + '\n' + document.getElementById('display').value;
+}
+
+function getXMLHttpRequest() {
+   if(window.ActiveXObject) {      //explorer 4~8
+      setDisplay('explorer 4~8');
+      return new ActiveXObject("Microsoft.XMLHTTP");
+   } else if(window.XMLHttpRequest) {      //etc, explorer 10...
+      setDisplay('explorer 10, chrome, etc...');
+      return new XMLHttpRequest();
+   } else {
+      setDisplay('XMLHttpRequest를 지원하지 않은 브라우저입니다.');
+      return null;
+   }
+}
+
+
+function load(url) {
+   var xhr = getXMLHttpRequest();
+   printReadyState(xhr);   // 0:uninitialized
+   xhr.open('GET',url,true);
+   printReadyState(xhr);   // 1:loading
+   xhr.onreadystatechange = function() {   //callback function
+      printReadyState(xhr);
+                        // 2:send() -> loaded
+                        // 3:interactive(receiving)
+                        // 4:complete
+                        
+      if(xhr.readyState == 4) {
+         if(xhr.status == 200) {
+            document.getElementById('rcvPage').innerHTML = xhr.responseText;
+         } else {
+            printReadyState('status : ' + xhr.status);
+         }
+      }
+   }
+   xhr.send(null);
+}
+
+function printReadyState(xhr) {
+   setDisplay('xhr.readyState : ' + xhr.readyState);
+}
+</script>
+</head>
+<body>
+<input type="button" value="get msg(txt)" onclick="load('msg.txt');" />
+<input type="button" value="get msg(jsp)" onclick="load('msg.jsp');" />
+<div id="rcvPage"></div>
+<hr/>
+<textarea id="display" rows="8" cols="50"></textarea>
+</body>
+</html>

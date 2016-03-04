@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Img onclick vs Image button</title>
+<script type="text/javascript">
+function greeting(){
+	alert('good morning~');
+}
+function bye(){
+	alert('good bye~');
+}
+</script>
+
+</head>
+<body>
+<form action="nemam.jsp" method="get">
+<input type="text" name="user_name" /><br />
+<img src="img/shaw.gif" width="100" onclick="greeting()">
+
+<input type="button" value="내가 버튼" onclick="bye()"/>
+<input type="image" src="img/shaw.gif" width="100" />
+<input type="submit" value="확인" />
+</form>
+</body>
+</html>

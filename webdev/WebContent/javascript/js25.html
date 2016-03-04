@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- window 객체 -->
+<script type="text/javascript">
+function keyword_message(){
+	alert('새창 버튼을 클릭해서 입력가능합니다');
+	document.myform.newwin.focus();
+}
+</script>
+</head>
+<body>
+<form name="myform">
+<input type="text" name="keyword" readonly="readonly" onclick="keyword_message()"/>
+<input type="button" value="새창" name="newwin"
+onclick="window.open('js25s.html','child','width=300, height=300');" 
+/>
+</form>
+</body>
+</html>

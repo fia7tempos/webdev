@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var human = [];
+
+		human.push({
+			name : '한소담',
+			nick : '땀',
+			idealtype : '원빈'
+		});
+
+		human.push({
+			name : '오창섭',
+			nick : '오마에',
+			idealtype : '피비케이츠'
+		});
+		human.push({
+			name : '강승윤',
+			nick : '강마에',
+			idealtype : '줄리 델피'
+		});
+
+		for ( var i in human) {
+			with (human[i]) {
+				toString = function() {
+					return name + '의 별명은 ' + nick + ' 이고 이상형은 ' + idealtype
+							+ '입니다';
+				}
+			}
+		};
+		for ( var i in human) {
+			console.log(human[i].toString());
+		};
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var f = null; 			//document.myform
+var seat_count = null; 	//seat_count
+
+function initReserve(){
+	f = document.reserve_form;
+	seat_count = f.seat.length;	
+}
+
+function reserveSeat(){
+	var msg = '';
+	var reserve = new Array();
+	
+	var reserve_idx =0;
+	for(var i=0;i<seat_count; i++){		
+		if(f.seat[i].disabled) continue;		
+		if(f.seat[i].checked){
+			f.seat[i].disabled = 'disabled';
+			reserve[reserve_idx] = i;
+			reserve_idx++;
+			if(msg=='') {
+				msg+=i;
+			}
+			else {
+				msg += ','+i;
+			}
+		}
+	}
+	if(msg !== ''){
+		alert(msg +'번 좌석이 예매되었습니다.');
+		for(var i2 = 0;i2 < reserve_idx;i2++){
+			f.seat[reserve[i2]].checked = false;
+			
+		}
+	}else {
+		alert('체크된 좌석이 없어서 예매할 수 없습니다.');
+	}
+}
+
+function confirmCheckedSeat(){
+	for(var i=0;i<seat_count;i++){
+		if(f.seat[i].checked) return true;
+	}
+	return false
+}
+
+function uncheckingSeat(){
+	for(var i=0;i<seat_count;i++){
+		f.seat[i].checked = false;
+	}
+}
+
+function searchSeat(){
+	var checkedSeat = confirmCheckedSeat();
+	if(checkedSeat){
+		if(confirm('이미 선택된 좌석이 있습니다.\n 자동선택 하시겠습니까?')){
+			uncheckingSeat();
+		}else{
+			return;			
+		}		
+	}
+	for(var i=0;i<seat_count;i++){
+		if(f.seat[i].disabled) continue;
+		f.seat[i].checked = 'checked';
+		var res = confirm(i+'번 좌석을 예매 하시겠습니까?');		
+		if(res){
+			f.seat[i].disabled = 'disabled';
+			alert(i+'번 좌석이 예매되었습니다.');
+			f.seat[i].checked = false;
+			return;
+		}else{
+			f.seat[i].checked = false;
+		}
+	}
+	alert('예매된 좌석이 없습니다');
+	return;
+}
+
+function searchReverseSeat(){
+	var checkedSeat = confirmCheckedSeat();
+	if(checkedSeat){
+		if(confirm('이미 선택된 좌석이 있습니다.\n 자동선택 하시겠습니까?')){
+			uncheckingSeat();
+		}else{
+			return;			
+		}		
+	}
+	for(var i=seat_count-1;i>=0;i--){
+		if(f.seat[i].disabled) continue;
+		f.seat[i].checked = 'checked';
+		var res = confirm(i+'번 좌석을 예매 하시겠습니까?');		
+		if(res){
+			f.seat[i].disabled = 'disabled';
+			alert(i+'번 좌석이 예매되었습니다.');
+			f.seat[i].checked = false;
+			return;
+		}else{
+			f.seat[i].checked = false;
+		}
+	}
+	alert('예매된 좌석이 없습니다');
+	return;
+}
+
+function searchCoupleSeat(){
+	var checkedSeat = confirmCheckedSeat();
+	if(checkedSeat){
+		if(confirm('이미 선택된 좌석이 있습니다 \n 자동선택 하시겠습니까?')){
+			uncheckingSeat();
+		}else {
+			return;
+		}
+	}
+	for(var i=0;i<seat_count-1;i++){
+		if(f.seat[i].disabled || f.seat[(i+1)].disabled || i%10==9) continue;
+		f.seat[i].checked = 'checked';
+		f.seat[i+1].checked = 'checked';
+		var res = confirm(i+','+(i+1)+'번 좌석을 예매 하시겠습니까?');
+		if(res){
+			f.seat[i].disabled ='disabled';
+			f.seat[i+1].disabled ='disabled';
+			alert(i+','+(i+1)+'번 좌석이 예매되었습니다')
+			f.seat[i].checked = false;
+			f.seat[i+1].checked = false;
+			return;
+		}else{
+			f.seat[i].checked = false;
+			f.seat[i+1].checked = false;
+		}
+	}
+
+	alert('예매된 좌석이 없습니당');
+		return;
+}
+function searchReverseCoupleSeat(){
+	var checkedSeat = confirmCheckedSeat();
+	if(checkedSeat){
+		if(confirm('이미 선택된 좌석이 있습니다 \n 자동선택 하시겠습니까?')){
+			uncheckingSeat();
+		}else {
+			return;
+		}
+	}
+	for(var i=seat_count-1;i>0;i--){
+		if(f.seat[i].disabled || f.seat[(i-1)].disabled || i%10==0) continue;
+		f.seat[i].checked = 'checked';
+		f.seat[i-1].checked = 'checked';
+		var res = confirm(i+','+(i-1)+'번 좌석을 예매 하시겠습니까?');
+		if(res){
+			f.seat[i].disabled ='disabled';
+			f.seat[i-1].disabled ='disabled';
+			alert(i+','+(i-1)+'번 좌석이 예매되었습니다')
+			f.seat[i].checked = false;
+			f.seat[i-1].checked = false;
+			return;
+		}else{
+			f.seat[i].checked = false;
+			f.seat[i-1].checked = false;
+		}
+	}
+
+	alert('예매된 좌석이 없습니당');
+		return;
+}
+
+	window.onload = function() {
+		initReserve();
+	}
+</script>
+</head>
+<body>
+<form name="reserve_form">
+<table>
+<tr>
+<td>
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+<input type="checkbox" name="seat" />
+</td>
+</tr>
+</table>
+<hr/>
+<input type="button" value="예매" onclick="reserveSeat();"/><br/>
+<input type="button" value="빈좌석 검색" onclick="searchSeat();"/>
+<input type="button" value="빈좌석 검색 역순" onclick="searchReverseSeat();"/><br/>
+<input type="button" value="커플좌석 검색" onclick="searchCoupleSeat();"/>
+<input type="button" value="커플좌석 검색 역순" onclick="searchReverseCoupleSeat();"/><br/>
+</form>
+</body>
+</html>

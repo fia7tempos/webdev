@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+function MakeHuman(name,nick,idealType){
+	this.name = name;
+	this.nick = nick;
+	this.idealType = idealType;
+};
+
+MakeHuman.prototype.toString = function() {
+	return this.name+'의 별명은 '+
+		   this.nick+'이며 이상형은 '+
+		   this.idealType + '이고, ' +
+		   ('boy' in this ? '남자친구는 '+this.boy+'입니다.':
+			   				'남자친구는 없습니다.');
+};
+
+function MakeNewType(name, nick, idealType,psychic){
+	this.base = MakeHuman;
+	this.base(name, nick,idealType);
+	this.psychic = psychic;
+};
+
+MakeNewType.prototype.toString = function() {
+	return this.name+'의 별명은 '+
+		   this.nick+'이며 이상형은 '+
+		   this.idealType + '이고, 특수능력은 ' +
+		   this.psychic + '이고, '+
+		   ('boy' in this ? '남자친구는 '+this.boy+'입니다.':
+			   				'남자친구는 없습니다.');
+};
+
+var human = [];
+human.push(new MakeNewType('홍길순','길순짱','강동원','텔레파시'));
+human.push(new MakeNewType('서예지','예지짱','강동원','예지능력'));
+human.push(new MakeNewType('김태희','태희짱','비','투시능력'));
+
+for(var i in human){
+	console.log(human[i].toString());
+}
+
+</script>
+
+</body>
+</html>

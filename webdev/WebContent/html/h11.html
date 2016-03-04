@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>HTML Test 11</title>
+	<script type="text/javascript">
+	function shift_right() {
+
+		var f = document.myform;
+		if(f.ta1.value != ''){
+			f.ta2.value = f.ta1.value;
+			f.ta1.value = '';
+		}else{
+			alert("옮길 값이 없습니당");
+		}
+			
+		
+	}
+	function shift_left() {
+		var f = document.myform;
+		if(f.ta2.value != ''){
+			f.ta1.value = f.ta2.value;
+			f.ta2.value = '';
+		}else{
+			alert("옮길 값이 없습니당");
+		}
+		
+	}
+	</script>
+</head>
+<body>
+<form name="myform">
+<table>
+	<tr>
+		<td> <textarea name="ta1" rows="5" cols="20">딸기밭이여 영원하라</textarea>	</td>
+		<td>
+		<input type="button" value="▶" onclick="javascript:shift_right();"/><br />
+		<input type="button" value="◀" onclick="javascript:shift_left();"/></td>
+		<td><textarea name="ta2" rows="5" cols="20"></textarea>	</td>	
+	</tr>
+</table>
+</form>
+
+</body>
+</html>

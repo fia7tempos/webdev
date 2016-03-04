@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+@import url("../css/pc.css");
+</style>
+<script type="text/javascript" src="../js/xhr.js"></script>
+<script type="text/javascript">
+	var xmlDoc = null;
+	var xslDoc = null;
+	function loadXML() {
+		sendRequest('books.xml','',loadbooks,'POST');
+	}
+	
+	function loadbooks() { //callback function
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				xmlDoc = xhr.responseXML;				
+				sendRequest('books.xsl','',loadXSL,'POST');
+				
+// 				var bookList = xmlDoc.getElementsByTagName('book');				
+// 				var html = '<table><caption>책 목록</caption>';
+// 				html += '<tr><th>제목</th><th>작가</th></tr>';
+// 				for(var i=0;i<bookList.length;i++){
+// 					var book = bookList.item(i);
+// 					var title = book.getElementsByTagName('title').item(0).firstChild.nodeValue;
+// 					var author = book.getElementsByTagName('author').item(0).firstChild.nodeValue;
+// 					html += '<tr><td>'+title+'</td><td>'+author+'</td></tr>';
+// 				}
+// 				html += '</table>';
+// 				document.getElementById('result').innerHTML += html;
+			}
+		}
+	}
+	function loadXSL() { 
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				xslDoc = xhr.responseXML;
+				doXSLT();
+			}
+		}
+	}
+	function doXSLT(){
+		if(xmlDoc==null||xslDoc==null){
+			alert('xml,xsl 정보를 읽어오지 못했습니다.');
+			return;
+		} 
+		var result = document.getElementById('result');
+		
+		var xsltProc = new XSLTProcessor(); // 컨버팅 위한 객체
+		xsltProc.importStylesheet(xslDoc); 
+		var html = xsltProc.transformToFragment(xmlDoc,document);
+		result.appendChild(html);
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="get XML" onclick="loadXML();" />
+	<h1><div id="result"></div></h1>
+</body>
+</html>

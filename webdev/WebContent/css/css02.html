@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>회원가입</title>
+	<style type="text/css">
+	@import url("css02.css");
+	</style>	
+</head>
+<body>
+<form action="process_css02.jsp" method="GET">
+<table>
+	<caption>회원 가입</caption>
+	<tr>
+		<th>아이디</th>
+		<td><input class="inp" type="text" name="user_id" size="100" autofocus="autofocus" required="required" maxlength="10"/>	
+	</tr>
+	<tr>
+		<th>비밀번호</th>
+		<td><input type="password" size="100" name="user_pw" required="required"/>	
+	</tr>
+	<tr>
+		<th>이름</th>
+		<td><input class="inp" type="text" name="user_name" /></td>	
+	</tr>
+	<tr>
+		<th>성별</th>
+		<td><input type="radio" name="user_gender" value="1" checked="checked" />남
+		<input type="radio" name="user_gender" value="2" />여</td>	
+	</tr>
+	<tr>
+		<th>취미</th>
+		<td>
+		<input type="checkbox" name="user_hobby1" value="1" checked="checked" />잠자기
+		<input type="checkbox" name="user_hobby2" value="2" />뒹굴기
+		<input type="checkbox" name="user_hobby3" value="3" />가위눌리기
+		</td>	
+	</tr>
+	<tr>
+		<th>관심분야</th>
+		<td><select name="uset_inter" multiple="multiple">
+			<option value="Java">Java</option>
+			<option value="Web">Web</option>
+			<option value="Framework">Framework</option>
+			<option value="DataBase" selected="selected">DataBase</option>
+			<option value="Android">Android</option>
+		</select>
+			
+		</td>	
+	</tr>
+	<tr>
+		<th>생일</th>
+		<td>
+			<input type="date" name="user_birth" value="2016-09-11" />
+		</td>	
+	</tr>
+	<tr>
+		<th>하고싶은 말</th>
+		<td><textarea name="say" rows="5" cols="20"></textarea>	</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+		<input type="reset" class="btn" value="초기화">
+		<input type="submit" class="btn" value="작성완료">		
+		</td>
+	</tr>
+</table>
+<div id="strawberry">
+딸기밭이여 영원하라<br />
+딸기밭이여 영원하라<br />
+딸기밭이여 영원하라<br />
+딸기밭이여 영원하라<br />
+</div><div class="warning_message">
+경고! 당신은 뭔가 잘못했습니다.
+</div>
+<a href="http://naver.com">naver</a><br />
+
+</form>
+</body>
+</html>

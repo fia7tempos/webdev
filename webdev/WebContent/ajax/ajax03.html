@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/xhr.js"></script>
+<script type="text/javascript">
+	function load(url) {
+		var name= document.getElementById('name').value;
+		var hobby= document.getElementById('hobby').value;
+		if(name.trim()==''){
+			alert('먼저 이름을 입력하세요.');
+			document.getElementById('name').focus();
+			return;
+		}		
+		if(hobby.trim()==''){
+			alert('취미를 입력하세요.');
+			document.getElementById('hobby').focus();
+			return;
+		}
+		var params='name='+name+'&hobby='+hobby;
+		sendRequest(url,params,callback,'GET');
+	}
+	function callback() { //callback function
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				document.getElementById('rcvPage').innerHTML = xhr.responseText;				
+			} else {
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h1>난 누구지? 내 이름을 불러봐~</h1>
+이름: <input type="text" id="name"/> <br/>
+취미: <input type="text" id="hobby"/> <br/>
+	<input type="button" value="say" onclick="load('iam.jsp');" />
+	<h1><div id="rcvPage"></div></h1>
+</body>
+</html>

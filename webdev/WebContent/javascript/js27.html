@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 자바스크립트로 객체만들기 -->
+</head>
+<body>
+<script type="text/javascript">
+var member ={
+	name   :'길태은',
+	nick:'탠둥이~',
+	height :155,
+	weight :44.2,
+	hobby  :['프로그래밍','잠자기','음주가무'],
+};
+
+//블럭지정
+with(member){ 
+	 alert(name + '의 별명은 '+nick + '이고 이상형은 '+
+			 ('idealType' in member == false ? '없으며':idealtype='리누즈토발즈 이며')+
+			   ' 키는 '+height+'cm, 중량은 ' +  weight+'kg이며 취미는 '+ hobby+'입니다.'
+	);
+}
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/xhr.js"></script>
+<script type="text/javascript">
+	function load(url) {
+		sendRequest(url,null,callback,'GET');
+	}
+	function callback() { //callback function
+		if (xhr.readyState == 4) {
+			if (xhr.status == 200) {
+				document.getElementById('rcvPage').innerHTML = xhr.responseText;
+			} else {
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="get msg(txt)" onclick="load('msg.txt');" />
+	<input type="button" value="get msg(jsp)" onclick="load('msg.jsp');" />
+	<div id="rcvPage"></div>
+</body>
+</html>

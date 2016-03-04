@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function change_red(){
+	parent.content.document.bgColor='red';
+	document.frametest.content_color.value = parent.content.document.bgColor;	
+}
+function change_blue(){
+	parent.content.document.bgColor='blue';
+	document.frametest.content_color.value = parent.content.document.bgColor;
+}
+function change_yellow(){
+	parent.content.document.bgColor='yellow';
+	document.frametest.content_color.value = parent.content.document.bgColor;
+}
+function change_green(){
+	parent.content.document.bgColor='green';
+	document.frametest.content_color.value = parent.content.document.bgColor;
+}
+function change_bg(color){
+	parent.content.document.bgColor=color;	
+	document.frametest.content_color.value = parent.content.document.bgColor;
+}
+function getColor2(){
+	return parent.content.document.bgColor;
+}
+function getColor(){
+	return document.getElementById('content_color').value;
+}
+</script>
+</head>
+<body>
+<a href="lunch.html" target="content">점심</a><br />
+<a href="h14.html" target="_top">전체화면으로</a><br />
+<form name="frametest">
+	<input type="button" value="나는 지금 빨간색" onclick="change_bg('red')" />
+	<input type="button" value="나는 지금 파란색" onclick="change_bg('blue')" />
+	<input type="button" value="나는 지금 초록색" onclick="change_bg('green')" />
+	<input type="button" value="나는 지금 노란색" onclick="change_bg('yellow')" />
+	<input type="text" id="content_color" />
+	<input type="button" value="나는 니가 입력한색" onclick="change_bg(getColor())" />
+</form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+	var test = 'a';
+	var test = 'b';
+	
+	function func(){
+		for(var i=1;i<=3;i++){
+			console.log(i);
+			var a = 100; // 이 변수도 루프 빠져나간다고 초기화되지 않고, 함수 빠져나가면 날라감
+		}
+		console.log(a);
+	}	
+</script>
+	
+<script type="text/javascript">	
+	func();
+	alert(a);
+</script>
+</body>
+</html>

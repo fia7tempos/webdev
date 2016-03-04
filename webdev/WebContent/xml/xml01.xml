@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookList SYSTEM "xml01.dtd">
+<bookList>	<!-- 루트 태그 -->
+	<book kind="소설" country="러씨아">
+		<title>까리마조프가의 형제</title>
+		<author>도스토예프스키</author>
+		<price>30000</price>
+	</book>
+	<book kind="소설" country="알제리">
+		<title>시지프스의 신화</title>
+		<author>알베르 카뮈</author>
+		<price>20000</price>
+	</book>
+	<book kind="소설" country="영국">
+		<title>푸코의 진자</title>
+		<writer>움베르토 에코</writer>
+		<price>10000</price>
+	</book>
+	<book kind="소설" country="일본">
+		<title>냉정과 열정사이</title>
+		<author>에쿠니 가오리</author>
+		<author>츠지 히토나라</author>
+		<price>10000</price>
+	</book>
+</bookList>

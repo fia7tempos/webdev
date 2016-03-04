@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var MakeHuman = function(name, nick, idealType)	{
+		var returnValue = {
+			'name':name,
+			'nick':nick,
+			'idealType':idealType,
+			'toString' : function() {
+				return this.name + '의 별명은 ' + 
+				this.nick + ' 이고 이상형은 ' + 
+				this.idealType + '입니다';
+			}
+		};
+		return returnValue;
+	}
+
+	var human = [];
+
+	human.push(MakeHuman('한소담','담','강동원'));
+	human.push(MakeHuman('오창섭','오마에','피비케이츠'));
+	human.push(MakeHuman('강승윤','강마에','줄리 델피'));
+	
+	for ( var i in human) {
+		console.log(human[i].toString());
+	};
+	</script>
+
+</body>
+</html>

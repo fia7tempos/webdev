@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+	<book>
+		<title>죄와 벌</title>
+		<author>도스토예프스키</author>
+	</book>
+	<book>
+		<title>이방인</title>
+		<author>알베르 카뮈</author>
+	</book>
+	<book>
+		<title>많은 별들이 한곳으로 흘러간다</title>
+		<author>윤대녕</author>
+	</book>
+</books>

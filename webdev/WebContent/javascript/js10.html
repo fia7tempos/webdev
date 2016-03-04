@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- 문제: 점수 입력받아서 등급 출력하기 -->
+<body>
+<script type="text/javascript">
+	do{
+		var score = parseInt(prompt('점수를 입력하세요(0~100)',0));
+	}while(score>100 || score<0)
+	
+	var grade = '';
+	switch(Math.ceil((score+1)/10)){
+	case 11:
+	case 10: grade='A'; break;
+	case 9: grade='B'; break;
+	case 8: grade='C'; break;
+	case 7: grade='D'; break;
+	default : grade='F';
+	}
+	document.write('당신의 성적: '+grade);	
+</script>
+</body>
+</html>
